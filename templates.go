@@ -7,20 +7,16 @@ import (
 
 // Template represents an email template on the server
 type Template struct {
-	// TemplateId: ID of template
-	TemplateId int64
-	// Name: Name of template
-	Name string
-	// Subject: The content to use for the Subject when this template is used to send email.
-	Subject string
-	// HtmlBody: The content to use for the HtmlBody when this template is used to send email.
-	HtmlBody string
-	// TextBody: The content to use for the TextBody when this template is used to send email.
-	TextBody string
-	// AssociatedServerId: The ID of the Server with which this template is associated.
-	AssociatedServerId int64
-	// Active: Indicates that this template may be used for sending email.
-	Active bool
+	TemplateId         int64
+	Name               string // (Required)
+	Alias              string // An optional string you can provide to identify this template.
+	Subject            string // (Required) The content to use for the Subject when this template is used to send email.
+	HtmlBody           string // (Required) The content to use for the HtmlBody when this template is used to send email.
+	TextBody           string // (Required) The content to use for the TextBody when this template is used to send email.
+	TemplateType       string // Standard or Layout. Defaults to Standard.
+	LayoutTemplate     string // An optional string to specify which Layout Template to use (via layout alias) for an existing Layout Template when creating a standard template.
+	AssociatedServerId int64  // The ID of the Server with which this template is associated.
+	Active             bool   // Indicates that this template may be used for sending email.
 }
 
 // TemplateInfo is a limited set of template info returned via Index/Editing endpoints
