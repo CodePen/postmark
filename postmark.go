@@ -91,6 +91,16 @@ func (client *Client) doRequest(opts parameters, dst interface{}) error {
 	if err != nil {
 		return err
 	}
+
+	var apiErr APIError
+	err = json.Unmarshal(body, &apiErr)
+	if err != nil {
+		return err
+	}
+	if apiErr.ErrorCode != 0 {
+		return apiErr
+	}
+
 	err = json.Unmarshal(body, dst)
 	return err
 }
