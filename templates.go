@@ -7,7 +7,7 @@ import (
 
 // Template represents an email template on the server
 type Template struct {
-	TemplateId         int64
+	TemplateId         int64  `json:",omitempty"`
 	Name               string // (Required)
 	Alias              string // An optional string you can provide to identify this template.
 	Subject            string // (Required) The content to use for the Subject when this template is used to send email.
@@ -15,8 +15,8 @@ type Template struct {
 	TextBody           string // (Required) The content to use for the TextBody when this template is used to send email.
 	TemplateType       string // Standard or Layout. Defaults to Standard.
 	LayoutTemplate     string // An optional string to specify which Layout Template to use (via layout alias) for an existing Layout Template when creating a standard template.
-	AssociatedServerId int64  // The ID of the Server with which this template is associated.
-	Active             bool   // Indicates that this template may be used for sending email.
+	AssociatedServerId int64  `json:",omitempty"` // The ID of the Server with which this template is associated.
+	Active             bool   `json:",omitempty"` // Indicates that this template may be used for sending email.
 }
 
 // TemplateInfo is a limited set of template info returned via Index/Editing endpoints
