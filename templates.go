@@ -21,12 +21,12 @@ type Template struct {
 
 // TemplateInfo is a limited set of template info returned via Index/Editing endpoints
 type TemplateInfo struct {
-	// TemplateId: ID of template
-	TemplateId int64
-	// Name: Name of template
-	Name string
-	// Active: Indicates that this template may be used for sending email.
-	Active bool
+	TemplateId     int64  // ID of template
+	Name           string // Name of template
+	Active         bool   // Indicates that this template may be used for sending email.
+	Alias          string // An optional string you can provide to identify this template.
+	TemplateType   string // Standard or Layout. Defaults to Standard.
+	LayoutTemplate string // An optional string to specify which Layout Template to use (via layout alias) for an existing Layout Template when creating a standard template.
 }
 
 ///////////////////////////////////////
